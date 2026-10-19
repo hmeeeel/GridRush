@@ -1,0 +1,13 @@
+{
+  "name": "gridrush",
+  "version": "1.0.0",
+  "description": "Realtime multiplayer web game: own RFC 6455 WebSocket server, authoritative game engine, Supabase persistence. No frameworks, no runtime dependencies.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}

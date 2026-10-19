@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eef2f4">
+  <title>GridRush - гонка за предметом</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="hud">
+      <div class="who">
+        <span class="badge" id="connBadge" data-state="CONNECTING">Подключение…</span>
+        <span class="who__nick" id="hudNick"></span>
+        <button class="link-btn" id="renameBtn" type="button" hidden>Сменить ник</button>
+      </div>
+      <dl class="stats">
+        <div class="stat"><dd id="hudScore">0</dd><dt>очки раунда</dt></div>
+        <div class="stat"><dd id="hudTotal">0</dd><dt>всего</dt></div>
+        <div class="stat"><dd id="hudTimer">–:––</dd><dt>до конца раунда</dt></div>
+        <div class="stat"><dd id="hudOnline">0</dd><dt>онлайн</dt></div>
+        <div class="stat"><dd id="hudPing">–</dd><dt>пинг, мс</dt></div>
+      </dl>
+    </header>
+
+    <main class="stage">
+      <section class="board" id="boardWrap">
+        <canvas id="board" aria-label="Игровое поле"></canvas>
+        <div class="veil" id="veil" hidden></div>
+        <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+      </section>
+
+      <aside class="side">
+        <section class="panel">
+          <h2>Сейчас в раунде</h2>
+          <ol class="ranks" id="rankRound"></ol>
+        </section>
+        <section class="panel">
+          <h2>За всё время</h2>
+          <ol class="ranks" id="rankAll"></ol>
+        </section>
+        <section class="panel panel--feed">
+          <h2>Лента событий</h2>
+          <ul class="feed" id="feed"></ul>
+        </section>
+      </aside>
+    </main>
+
+    <nav class="pad" id="pad" aria-label="Управление">
+      <button class="pad__btn pad__up" type="button" data-dir="U" aria-label="Вверх">▲</button>
+      <button class="pad__btn pad__left" type="button" data-dir="L" aria-label="Влево">◀</button>
+      <button class="pad__btn pad__down" type="button" data-dir="D" aria-label="Вниз">▼</button>
+      <button class="pad__btn pad__right" type="button" data-dir="R" aria-label="Вправо">▶</button>
+    </nav>
+  </div>
+
+  <div class="overlay" id="overlay" hidden>
+    <form class="sheet" id="sheet" autocomplete="off">
+      <h1 id="ovTitle"></h1>
+      <p id="ovText"></p>
+      <label class="field" id="ovField" hidden>
+        <span>Ник</span>
+        <input id="ovInput" type="text" maxlength="16" spellcheck="false" autocapitalize="off" enterkeyhint="go">
+      </label>
+      <p class="sheet__error" id="ovError" role="alert"></p>
+      <div class="sheet__actions">
+        <button class="btn" id="ovPrimary" type="submit"></button>
+        <button class="btn btn--ghost" id="ovSecondary" type="button" hidden></button>
+      </div>
+    </form>
+  </div>
+
+  <script src="protocol.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

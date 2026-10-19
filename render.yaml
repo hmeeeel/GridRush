@@ -1,0 +1,14 @@
+# Render Blueprint: New - Blueprint - выберите репозиторий.
+services:
+  - type: web
+    name: gridrush
+    runtime: node
+    plan: free
+    buildCommand: echo "no dependencies to install"
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: https://bobzghzpimfgrxdhlvfa.supabase.co
+        sync: false
+      - key: sb_publishable_vylBHREhH94i8Ld_PkxiQQ_hi6f_8ko
+        sync: false
